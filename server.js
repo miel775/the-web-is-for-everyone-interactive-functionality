@@ -55,19 +55,27 @@ app.get ('/', async function (request, response) {
   response.render('index.liquid', {
     publications: allPublicationsJSON.data,
     datedpublications: datedPublicationsJSON.data,
-    
-    topicBelangenhartiging = topicBelangenhartigingJSON.data,
-    topicColumn = topicColumnJSON,
-    topicAwards = topicAwardsJSON,
-    topicDDAnieuws = topicDDAnieuwsJSON,
-    topicBranche = topicBrancheJSON,
-    topicDigitaleinclusie = topicDigitaleinclusieJSON,
-    topicAlgemeen = topicAlgemeenJSON,
-    topicDdaforgood = topicDdaforgoodJSON
+    topicBelangenhartiging: topicBelangenhartigingJSON.data,
+    topicColumn: topicColumnJSON,
+    topicAwards: topicAwardsJSON,
+    topicDDAnieuws: topicDDAnieuwsJSON,
+    topicBranche: topicBrancheJSON,
+    topicDigitaleinclusie: topicDigitaleinclusieJSON,
+    topicAlgemeen: topicAlgemeenJSON,
+    topicDdaforgood: topicDdaforgoodJSON
   });
 });
 
-
+app.get('/publication/:id', async function (request, response) {       
+  const publicationz = request.params.id;                              
+  const publicationFetch = await fetch(`https://fdnd-agency.directus.app/items/dda_publications/?fields=*.*&filter={"id":"${publicationz}"}&limit=1`)
+  const publicationFetchJSON = await publicationFetch.json()
+ 
+  response.render('publication.liquid', {
+    publicationz: publicationFetchJSON.data?.[0] || [] 
+    
+  });
+});
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.post.method over app.post()
 app.post(…, async function (request, response) {

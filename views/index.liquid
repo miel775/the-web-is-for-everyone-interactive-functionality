@@ -1,5 +1,46 @@
 {% include 'views/head.liquid', title: 'DDA Publicaties' %}
 
+<section class="publications">
+    <h1> Publications </h1>
+        <p>Om er voor te zorgen dat ook jij op de hoogte blijft van het laatste nieuws en interessante opinies met betrekking tot onze branche en digitale innovaties, delen we hier alle content die we of zelf hebben gecreëerd, bijvoorbeeld met input van onze leden, of verkregen hebben via één van onze partners.</p>
+    </section>
+
+    <section class="content">
+        <form class="list-form">
+                <input type="search" placeholder="Zoeken in Publicaties">
+
+                <select id="head-label" name="filteren" class="form-filters">
+                    <option value="">Filter op Topic</option>
+                    <option value="Algemeen">Algemeen</option>
+                    <option value="DDAforgood">DDAforgood</option>
+                    <option value="Branche">Branche</option>
+                    <option value="Digitale-inclusie">Digitale Inclusie</option>
+                </select>
+        </form>
+
+        <div class="gridview">
+
+            <div class="publicaties-1">
+        {% for publication in publications %}
+            <a href="/publication/{{ publicationz.id }}">
+                {% comment %} deze foto's werken nog niet {% endcomment %}
+                <img src="https://fdnd-agency.directus.app/assets/{{ publication.photo }}"  width="100px">
+                <h2 class="hover"> {{ publication.title }} </h2>
+        {% endfor %}
+            </a>
+            </div>
+            
+            <div class="publicaties-2">
+                {% for publication in publications %}
+                    <a href="/publication/{{ publication.id }}">
+                        {% comment %} deze foto's werken nog niet {% endcomment %}
+                        <img src="https://fdnd-agency.directus.app/assets/{{ publication.photo }}"  width="100px">
+                        <h2 class="hover"> {{ publication.title }} </h2>
+                {% endfor %}
+                    </a>
+                    </div>
+        </div>
+    </section>
 
 
 {% include 'views/footer.liquid' %}

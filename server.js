@@ -24,16 +24,49 @@ app.engine('liquid', engine.express());
 app.set('views', './views')
 
 
-console.log('Let op: Er zijn nog geen routes. Voeg hier dus eerst jouw GET en POST routes toe.')
+app.get ('/', async function (request, response) {
+  const allPublications = await fetch('https://fdnd-agency.directus.app/items/dda_publications');
+  const datedPublications = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?sort=-date&limit=3');
 
-/*
-// Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
-app.get(…, async function (request, response) {
+  // all the filter elements
+  const topicDdaforgood = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=DDAforgood');
+  const topicAlgemeen = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=Algemeen');
+  const topicDigitaleinclusie = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=Digital inclusie');
+  const topicBranche = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=Branche');
+  const topicDDAnieuws = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=DDA nieuws');
+  const topicAwards = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=Awards');
+  const topicColumn = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=Column');
+  const topicBelangenhartiging = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=Belangenhartiging');
   
-  // Zie https://expressjs.com/en/5x/api.html#res.render over response.render()
-  response.render(…)
-})
-*/
+
+
+  const datedPublicationsJSON = await datedPublications.json();
+  const allPublicationsJSON = await allPublications.json();
+
+  const topicDdaforgoodJSON = await topicDdaforgood.json();
+  const topicAlgemeenJSON = await topicAlgemeen.json();
+  const topicDigitaleinclusieJSON = await topicDigitaleinclusie.json();
+  const topicBrancheJSON = await topicBranche.json();
+  const topicDDAnieuwsJSON = await topicDDAnieuws.json();
+  const topicAwardsJSON = await topicAwards.json();
+  const topicColumnJSON = await topicColumn.json();
+  const topicBelangenhartigingJSON = await topicBelangenhartiging.json();
+
+  response.render('index.liquid', {
+    publications: allPublicationsJSON.data,
+    datedpublications: datedPublicationsJSON.data,
+    
+    topicBelangenhartiging = topicBelangenhartigingJSON.data,
+    topicColumn = topicColumnJSON,
+    topicAwards = topicAwardsJSON,
+    topicDDAnieuws = topicDDAnieuwsJSON,
+    topicBranche = topicBrancheJSON,
+    topicDigitaleinclusie = topicDigitaleinclusieJSON,
+    topicAlgemeen = topicAlgemeenJSON,
+    topicDdaforgood = topicDdaforgoodJSON
+  });
+});
+
 
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.post.method over app.post()

@@ -1,0 +1,182 @@
+:root{
+
+    /* fonts desktop */
+    --desktop-h1: 96px;
+    --desktop-h2: 64px;
+    --desktop-h3: 48px;
+    --desktop-h4: 32px;
+    --desktop-h5: 24px;
+    --desktop-h6: 24px;
+    --desktop-p: 18px;
+    --desktop-subtext: 16px;
+    
+    /* fonts tablet */
+    --tablet-h1: 72px;
+    --tablet-h2: 48px;
+    --tablet-h3: 36px;
+    --tablet-h4: 28px;
+    --tablet-h5: 22px;
+    --tablet-h6: 20px;
+    --tablet-p: 16px;
+    --tablet-subtext: 16px;
+    
+    /* fonts mobile */
+    --mobile-h1: 48px;
+    --mobile-h2: 40px;
+    --mobile-h3: 32px;
+    --mobile-h4: 24px;
+    --mobile-h5: 18px;
+    --mobile-h6: 18px;
+    --mobile-p: 16px;
+    --mobile-subtext: 14px;
+    
+    /* spacing */
+    --spacing-8: 8px;
+    --spacing-12: 12px;
+    --spacing-16: 16px;
+    --spacing-24: 24px;
+    --spacing-32: 32px;
+    --spacing-40: 40px;
+    --spacing-48: 48px;
+    --spacing-64: 64px;
+    --spacing-72: 72px;
+    --spacing-96: 96px;
+    --spacing-104: 104px;
+    --spacing-128: 128px;
+    
+    /* fonts */
+    --font-family-regular: Archivo, sans-serif;
+    --font-family-mono: MartianMono, monospace;
+    
+    /* colors */
+    --color-black: #222226;
+    --color-grey: #666666;
+    --color-white: #ffffff;
+    --color-blue: #364bf7;
+    --color-yellow: #f7e19f;
+    
+    /* border */
+    --border: 1px #222226 solid;
+    
+    
+    /* grid templates */
+    --grand-grid-colums: 1fr, repeat(12, 1fr), 1fr;
+    --grid-columns: 64px, repeat(12, 1fr), 64px;
+    --small-grid-columns: 16px, repeat(4, 1fr), 16px;
+    --grand-grid-gap: 32px;
+    }
+    
+    .archivo-semi-bold {
+        font-family: "Archivo-semi-bold", sans-serif;
+        font-optical-sizing: auto;
+        letter-spacing: -4%;
+        font-weight: 700;
+        font-style: normal;
+        font-variation-settings:
+          "wdth" 100;
+    }
+    
+    .archivo-regular {
+        font-family: "Archivo", sans-serif;
+        font-optical-sizing: auto;
+        letter-spacing: -4%;
+        font-weight: 400;
+        font-style: normal;
+    }
+    
+    .martian-mono {
+        font-family: "Martian Mono", monospace;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        letter-spacing: 0%;
+        font-style: normal;
+    }
+    
+    h1 {
+        font-family: "Archivo-semi-bold", sans-serif;
+        font-size: var(--desktop-h1);
+        text-transform: uppercase;
+    
+        @media (max-width:1200px) {
+            font-size: var(--tablet-h1);
+        }
+        @media (max-width:530px) {
+            font-size: var(--mobile-h1);
+        }
+    }
+    
+    h2 {
+        font-family: "Archivo-semi-bold", sans-serif;
+        font-size: var(--desktop-h2);
+        text-transform: uppercase;
+    
+        @media (max-width:1200px) {
+            font-size: var(--tablet-h2);
+        }
+        @media (max-width:530px) {
+            font-size: var(--mobile-h2);
+        }
+    }
+    
+    h3 {
+        font-family: "Archivo", sans-serif;
+        font-size: var(--desktop-h3);
+    
+        @media (max-width:1200px) {
+            font-size: var(--tablet-h3);
+        }
+        @media (max-width:530px) {
+            font-size: var(--mobile-h3);
+        }
+    }
+    
+    h4 {
+        font-family: "Archivo", sans-serif;
+        font-size: var(--desktop-h4);
+    
+        @media (max-width:1200px) {
+            font-size: var(--tablet-h4);
+        }
+        @media (max-width:530px) {
+            font-size: var(--mobile-h4);
+        }
+    }
+    
+    p {
+        font-family: "Archivo-semi-bold", sans-serif;
+        font-size: var(--desktop-p);
+    
+        @media (max-width:1200px) {
+            font-size: var(--tablet-p);
+        }
+        @media (max-width:530px) {
+            font-size: var(--mobile-p);
+        }
+    }
+    
+    .subtext {
+        font-family: "Martian Mono", monospace;
+        font-size: var(--desktop-subtext);
+    
+        @media (max-width:1200px) {
+            font-size: var(--tablet-subtext);
+        }
+        @media (max-width:530px) {
+            font-size: var(--mobile-subtext);
+        }
+    }
+    
+    nav {
+        font-family: var(--font-family-mono);
+    }
+    
+    .active {
+        color: var(--color-blue);
+    }
+    
+    .bold {
+        font-weight: 1000;
+    }
+    
+    
+    /* keyframes */

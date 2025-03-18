@@ -49,6 +49,11 @@ app.set('views', './views')
 
 app.get ('/', async function (request, response) {
 
+  if (!allPublications.photo) {
+    // als publicatie foto niet werkt laad dan deze foto
+    allPublications.photo = 'https://verzekeringen.hema.nl/uploads/large_leuke_dingen_doen_1100_d99b6a0e97.webp'; 
+  }
+
   response.render('index.liquid', {
     publications: allPublicationsJSON.data,
     datedpublications: datedPublicationsJSON.data,
@@ -61,8 +66,6 @@ app.get ('/', async function (request, response) {
     topicAlgemeen: topicAlgemeenJSON,
     topicDdaforgood: topicDdaforgoodJSON
   });
-
-  response.redirect('303')
 });
 
 app.get('/publication/:id', async function (request, response) {       

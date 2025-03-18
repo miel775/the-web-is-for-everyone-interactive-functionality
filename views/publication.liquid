@@ -22,10 +22,26 @@
     </section>
 
     <section class="comment">
+        
 
     </section>
 
     <section class="type">
+
+    <form class="form-element">
+        <label for="name">Jouw naam</label>
+        <input type="text" name="name" id="name" required/>
+
+        <label for="emoji">Emoji</label>
+        <select name="emoji" id="emojis">
+            <option value="smile"> <i class="fa-solid fa-face-smile"></i> </option>
+            <option value="tired"> <i class="fa-solid fa-face-tired"></i> </option>
+            <option value="surprise"> <i class="fa-solid fa-face-surprise"></i> </option>
+            <option value="cry"><i class="fa-solid fa-face-sad-cry"></i></option>
+          </select>
+        {% comment %} hier kan je je bericht typen {% endcomment %}
+        <textarea for="message" rows="5" cols="15">Typ hier jouw bericht</textarea>
+    </form>
 
     </section>
 

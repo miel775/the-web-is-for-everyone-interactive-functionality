@@ -1,8 +1,14 @@
 {% include 'views/head.liquid', title: 'DDA Publicaties' %}
 
 <section class="publications">
+    <a href="/"> Ga terug </a>
+    {% comment %} hier moet nog een app.get komen {% endcomment %}
     <h1> {{ publicationz.title  }} </h1>
         <p>Om er voor te zorgen dat ook jij op de hoogte blijft van het laatste nieuws en interessante opinies met betrekking tot onze branche en digitale innovaties, delen we hier alle content die we of zelf hebben gecreëerd, bijvoorbeeld met input van onze leden, of verkregen hebben via één van onze partners.</p>
+    </section>
+
+    <section class="intro">
+    {{ publicationz.intro }}
     </section>
 
     <section class="content">

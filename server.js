@@ -1,56 +1,53 @@
-// Importeer het npm package Express (uit de door npm aangemaakte node_modules map)
-// Deze package is geïnstalleerd via `npm install`, en staat als 'dependency' in package.json
+
 import express from 'express'
 
-// Importeer de Liquid package (ook als dependency via npm geïnstalleerd)
 import { Liquid } from 'liquidjs';
 
-// Maak een nieuwe Express applicatie aan, waarin we de server configureren
+const allPublications = await fetch('https://fdnd-agency.directus.app/items/dda_publications');
+const allPublicationsJSON = await allPublications.json();
+
+const datedPublications = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?sort=-date&limit=3');
+const datedPublicationsJSON = await datedPublications.json();
+
+const topicDdaforgood = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=DDAforgood');
+const topicDdaforgoodJSON = await topicDdaforgood.json();
+
+const topicAlgemeen = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=Algemeen');
+const topicAlgemeenJSON = await topicAlgemeen.json();
+
+const topicDigitaleinclusie = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=Digital inclusie');
+const topicDigitaleinclusieJSON = await topicDigitaleinclusie.json();
+
+const topicBranche = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=Branche');
+const topicBrancheJSON = await topicBranche.json();
+
+const topicDDAnieuws = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=DDA nieuws');
+const topicDDAnieuwsJSON = await topicDDAnieuws.json();
+
+const topicAwards = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=Awards');
+const topicAwardsJSON = await topicAwards.json();
+
+const topicColumn = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=Column');
+const topicColumnJSON = await topicColumn.json();
+
+const topicBelangenhartiging = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=Belangenhartiging');
+const topicBelangenhartigingJSON = await topicBelangenhartiging.json();
+
 const app = express()
 
-// Maak werken met data uit formulieren iets prettiger
+
 app.use(express.urlencoded({extended: true}))
 
-// Gebruik de map 'public' voor statische bestanden (resources zoals CSS, JavaScript, afbeeldingen en fonts)
-// Bestanden in deze map kunnen dus door de browser gebruikt worden
 app.use(express.static('public'))
 
-// Stel Liquid in als 'view engine'
 const engine = new Liquid();
 app.engine('liquid', engine.express());
 
-// Stel de map met Liquid templates in
-// Let op: de browser kan deze bestanden niet rechtstreeks laden (zoals voorheen met HTML bestanden)
+
 app.set('views', './views')
 
 
 app.get ('/', async function (request, response) {
-  const allPublications = await fetch('https://fdnd-agency.directus.app/items/dda_publications');
-  const datedPublications = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?sort=-date&limit=3');
-
-  // all the filter elements
-  const topicDdaforgood = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=DDAforgood');
-  const topicAlgemeen = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=Algemeen');
-  const topicDigitaleinclusie = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=Digital inclusie');
-  const topicBranche = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=Branche');
-  const topicDDAnieuws = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=DDA nieuws');
-  const topicAwards = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=Awards');
-  const topicColumn = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=Column');
-  const topicBelangenhartiging = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?filter[topic][_eq]=Belangenhartiging');
-  
-
-
-  const datedPublicationsJSON = await datedPublications.json();
-  const allPublicationsJSON = await allPublications.json();
-
-  const topicDdaforgoodJSON = await topicDdaforgood.json();
-  const topicAlgemeenJSON = await topicAlgemeen.json();
-  const topicDigitaleinclusieJSON = await topicDigitaleinclusie.json();
-  const topicBrancheJSON = await topicBranche.json();
-  const topicDDAnieuwsJSON = await topicDDAnieuws.json();
-  const topicAwardsJSON = await topicAwards.json();
-  const topicColumnJSON = await topicColumn.json();
-  const topicBelangenhartigingJSON = await topicBelangenhartiging.json();
 
   response.render('index.liquid', {
     publications: allPublicationsJSON.data,
@@ -64,6 +61,8 @@ app.get ('/', async function (request, response) {
     topicAlgemeen: topicAlgemeenJSON,
     topicDdaforgood: topicDdaforgoodJSON
   });
+
+  response.redirect('303')
 });
 
 app.get('/publication/:id', async function (request, response) {       
@@ -75,6 +74,7 @@ app.get('/publication/:id', async function (request, response) {
     publicationz: publicationFetchJSON.data?.[0] || []
     });
 });
+
 
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.post.method over app.post()
@@ -102,6 +102,11 @@ app.post(…, async function (request, response) {
   response.redirect(303, …)
 })
 */
+
+
+app.get('/', async function (request, response) {
+  response.redirect(303, '/')
+})
 
 
 // Stel het poortnummer in waar Express op moet gaan luisteren

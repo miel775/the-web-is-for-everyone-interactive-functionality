@@ -14,6 +14,9 @@ body {
     display: grid;
     grid-template-columns: 20% 1fr 20%;
     background-color: var(--color-white);
+    position: fixed;
+    width: 97.9%;
+    z-index: 2;
 
     @media (max-width:720px) {
         display: none;
@@ -38,12 +41,13 @@ body {
         font-family: var(--font-family-mono);
         padding: 0.5em;
         align-items: center;
-
-        &:hover {
-            text-decoration: underline;
-            transition: 3s;
+        
+        a {
+            &:hover {
+                text-decoration: underline;
+                transition: 3s;
+            }
         }
-
         span {
             background-color: var(--color-blue);
             color: var(--color-white);

@@ -48,13 +48,7 @@ app.set('views', './views')
 
 
 app.get ('/', async function (request, response) {
-
-  if (!allPublications.photo) {
-    // als publicatie foto niet werkt laad dan deze foto
-    allPublications.photo = 'https://images.fixje.nl/wp-content/uploads/2019/01/iphone-laadt-niet-meer-op-1.jpg'; 
-  }
-
-
+  
   response.render('index.liquid', {
     publications: allPublicationsJSON.data,
     datedpublications: datedPublicationsJSON.data,

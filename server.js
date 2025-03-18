@@ -80,6 +80,30 @@ app.get('/publication/:id', async function (request, response) {
 });
 
 
+app.get ('/berichten', async function (request, response) {
+  response.render('messages.liquid', {
+
+  })
+})
+
+app.post ('/publication/:id', async function (request, response) {
+
+  const publicationID = request.params.id;
+
+  await fetch('https://fdnd-agency.directus.app/items/dda_messages', {
+    method: 'POST',
+    body: JSON.stringify({
+      for: `Publicatie ${publicationz}`,
+      from: request.body.from,
+      text: request.body.text
+    }),
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    }})
+
+    response.redirect(303, `/publicaties/${publicationz}`);
+})
+
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.post.method over app.post()
 app.post(…, async function (request, response) {

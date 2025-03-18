@@ -22,7 +22,7 @@
 
             <div class="publicaties-1">
         {% for publication in publications %}
-            <a href="/publication/{{ publicationz.id }}">
+            <a href="/publication/{{ publication.id }}">
                 {% comment %} deze foto's werken nog niet {% endcomment %}
                 <img src="https://fdnd-agency.directus.app/assets/{{ publication.photo }}"  width="100px">
                 <h2 class="hover"> {{ publication.title }} </h2>

@@ -69,13 +69,13 @@ app.get ('/', async function (request, response) {
 app.get('/publication/:id', async function (request, response) {       
   const publicationz = request.params.id;                              
   const publicationFetch = await fetch(`https://fdnd-agency.directus.app/items/dda_publications/?fields=*.*&filter={"id":"${publicationz}"}&limit=1`)
-  const publicationFetchJSON = await publicationFetch.json()
+  const publicationFetchJSON = await publicationFetch.json();
  
   response.render('publication.liquid', {
-    publicationz: publicationFetchJSON.data?.[0] || [] 
-    
-  });
+    publicationz: publicationFetchJSON.data?.[0] || []
+    });
 });
+
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.post.method over app.post()
 app.post(…, async function (request, response) {

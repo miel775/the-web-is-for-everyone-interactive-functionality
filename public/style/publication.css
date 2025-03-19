@@ -30,5 +30,55 @@ section {
     border-left: var(--border);
     border-right: var(--border);
     padding: 1em;
+}
+
+.type {
+    font-family: var(--font-family-mono);
+    border: var(--border);
+
+    .name {
+        position: relative;
+        top: -2.2em;
+        left: 0.3em;
+    }
+
+    .form-elements {
+        display: grid;
+        grid-template-rows: 90% 10%;
+        grid-template-columns: 25% 10% 1fr 10%;
+        gap: var(--spacing-8);
+
+        .text-area {
+            grid-column-start: 1;
+            grid-column-end: 5;
+        }
+
+        button {
+            grid-column-start: 4;
+            position: relative;
+            z-index: 2;
+            padding: var(--spacing-8);
+            border: var(--border);
+            background-color: var(--white);
+        }
+    }
+
+    .emoji {
+        position: relative;
+        top: -3.6em;
+        left: 17.5em;
+        
+        select {
+            padding: var(--spacing-8);
+            border: var(--border);
+            background-color: var(--white);
+        }
+    }
+
+    .text-area {
+        width: auto;
+        padding: 2em;
+    }
+
 
 }

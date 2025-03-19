@@ -78,8 +78,9 @@ body {
             a {
                 background-color: var(--color-white);
                 border: var(--border);
-                width: var(--spacing-64);
-                height: var(--spacing-64);
+                width: var(--spacing-32);
+                height: var(--spacing-32);
+                margin-top: -2em;
 
                 svg {
                     scale: 0.5;
@@ -164,6 +165,8 @@ body {
 .list-form {
     display: flex;
     justify-content: space-evenly;
+    padding-left:  var(--spacing-128);
+    padding-right: var(--spacing-128);
 }
 
 .textfield {
@@ -185,22 +188,29 @@ body {
 }
 }
 
+.content {
+    overflow: hidden;
+}
+
 .gridview {
     height: 32em;
     border-left: var(--border);
     border-right: var(--border);
     overflow: hidden;
+    margin-left: -1em;
 }
 
 .publicaties-1 {
     display: flex;
     animation: parade 15s linear infinite;
-    position: absolute;
+    position: relative;
     left: 12em;
     overflow: hidden;
     animation-play-state: running; 
+    padding: -1em;
 
     article {
+        padding: -1em;
         
     }
 
@@ -234,10 +244,9 @@ body {
 .publicaties-2 {
     display: flex;
     animation: parade-reversed 15s linear infinite;
-    position: absolute;
-    top: 49.3em;
+    position: relative;
     left: -25em;
-    overflow: hidden;
+    padding: -1em;
 
             
     @media (max-width: 1260px) {
@@ -278,7 +287,8 @@ body {
         background-color: var(--color-white);
         color: var(--color-blue);
         top: -156px;
-        margin: 2em;
+        width: 12em;
+        left: 2em;
     }
 }
 
@@ -291,6 +301,7 @@ body {
 .laatste-nieuws {
     border-left: var(--border);
     border-right: var(--border);
+    padding: -1em;
     
     h2 {
         display: flex;
@@ -307,6 +318,7 @@ body {
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    padding: -1em;
 }
 
 
@@ -358,6 +370,7 @@ body {
     position: relative;
     overflow: hidden;
     animation-play-state: running; 
+    padding: 1em;
 }
 
 .picture-container-1 {
@@ -431,6 +444,25 @@ footer {
             align-self: flex-start; 
             border: none;
             font-family: var(--font-family-mono);
+            display: block;
+
+            @media (max-width:720px) {
+                display: none;
+            }
+        }
+
+        .links-mobile {
+            gap: var(--spacing-12);
+            border: none;
+            display: flex;
+
+            i {
+                display: flex;
+            }
+        
+            @media (min-width:720px) {
+                display: none;
+            }
         }
 
         a {
@@ -444,3 +476,5 @@ footer {
         }
     }
 }
+
+

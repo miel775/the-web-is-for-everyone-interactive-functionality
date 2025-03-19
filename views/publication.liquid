@@ -26,32 +26,44 @@
 
     </section>
 
+    {% for message in messages %}
+        <div class="comment-1">
+            <div class="name">
+                <p>{{ message.from | replace: "Miel_", "" }}</p>
+            </div>
+
+            <div class="emoji">
+                {% assign emoji = message.for | split: "_" %}
+                {% if emoji[0] == 'smile' %}😊{%endif%}
+                {% if emoji[0] == 'suprise' %}😲{%endif%}
+            </div>
+
+            <div class="comment">
+                <p>{{ message.text }}</p>
+            </div>
+        </div>
+    {% endfor %}
+
     <section class="type">
 
-        <form class="form-element">
+        <form class="form-element" action="/publication/{{publicationz.id}}" method="POST">
             {% comment %} hier kan je je bericht typen {% endcomment %}
-            
-
-            
-
+                        
             <div class="form-elements">
 
-                <textarea for="message" rows="12" cols="140" required class="text-area">    
+                <textarea name="text" for="message" rows="12" cols="140" required class="text-area">    
                 </textarea>
 
-                <input type="text" name="name" id="name" placeholder="Naam" cols="25" required/>
+                <input type="text" name="from" id="name" placeholder="Naam" cols="25" required/>
 
-                <select name="emoji" id="emojis" required>
+                <select name="for" id="emojis" required>
                     <option value="smile">😊 </option>
                     <option value="tired">😩 </option>
                     <option value="surprise">😲 </option>
                     <option value="cry">😢 </option>
                 </select>
-                <button>Plaats</button>
+                <button type="submit">Plaats</button>
             </div>
-
-
-
         </form>
 
     </section>

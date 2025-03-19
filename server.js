@@ -67,36 +67,47 @@ app.get('/publication/:id', async function (request, response) {
   const publicationz = request.params.id;                              
   const publicationFetch = await fetch(`https://fdnd-agency.directus.app/items/dda_publications/?fields=*.*&filter={"id":"${publicationz}"}&limit=1`)
   const publicationFetchJSON = await publicationFetch.json();
- 
+
+  const messagesFetch = await fetch(`https://fdnd-agency.directus.app/items/dda_messages?filter={"_and":[{"from":{"_contains":"Miel_"}},{"for":{"_contains":"${publicationz}"}}]}`)
+  const messagesJSON = await messagesFetch.json();
+
   response.render('publication.liquid', {
-    publicationz: publicationFetchJSON.data?.[0] || []
-    });
+    publicationz: publicationFetchJSON.data?.[0] || [],
+    messages: messagesJSON.data
+  });
 });
 
 
 app.get ('/berichten', async function (request, response) {
-  response.render('messages.liquid', {
 
+  const messagesLiquid = await fetch('https://fdnd-agency.directus.app/items/dda_messages');
+  const messagesLiquidJSON = await messagesLiquid.json();
+
+  response.render('messages.liquid', {
+    messages: messagesLiquidJSON
   })
 })
 
 app.post ('/publication/:id', async function (request, response) {
-
   const publicationID = request.params.id;
 
   await fetch('https://fdnd-agency.directus.app/items/dda_messages', {
     method: 'POST',
     body: JSON.stringify({
-      for: `Publicatie ${publicationz}`,
-      from: request.body.from,
-      text: request.body.text
+      from: `Miel_${request.body.from}`,
+      text: request.body.text,
+      for: `${request.body.for}_${publicationID}`
     }),
     headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
-    }})
+      'Content-Type': 'application/json'
+    }
+  })
 
-    response.redirect(303, `/publicaties/${publicationz}`);
+  response.redirect(303, `/publication/${publicationID}`);
 })
+
+app.get ('/')
+// Het bericht wat in de DDA messages zit moet verstuurd worden naar de body
 
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.post.method over app.post()

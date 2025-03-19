@@ -1,4 +1,33 @@
 {% include 'views/head.liquid', title: 'DDA Publicaties' %}
 
+<form class="form-element" action="/publication/:id" method="GET"></form>
+{% comment %} hier kan je je bericht typen {% endcomment %}
+
+
+
+{% for message in messages %}
+
+{% endfor %}
+
+<div class="form-elements">
+
+    <textarea for="message" rows="12" cols="140" required class="text-area">    
+    </textarea>
+
+    <input type="text" name="name" id="name" placeholder="Naam" cols="25" required/>
+
+    <select name="emoji" id="emojis" required>
+        <option value="smile">😊 </option>
+        <option value="tired">😩 </option>
+        <option value="surprise">😲 </option>
+        <option value="cry">😢 </option>
+    </select>
+    <button>Plaats</button>
+</div>
+
+
+
+</form>
+
 
 {% include 'views/footer.liquid' %}

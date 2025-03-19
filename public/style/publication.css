@@ -32,6 +32,30 @@ section {
     padding: 1em;
 }
 
+.comment-1 {
+    border-left: var(--border);
+    border-right: var(--border);
+    display: grid;
+    grid-template-columns: 15% 85%;
+    grid-template-rows: 20% 80%;
+    height: 20vh;
+
+    .name {
+        grid-row: 1; 
+    }
+    
+    .emoji {
+        padding: -1em;
+        grid-row-start: 2;
+        transform: scale(4);
+    }
+
+    .comment {
+        grid-column: 2 / 3;
+        grid-row: 1 / 3;
+    }
+}
+
 .type {
     font-family: var(--font-family-mono);
     border: var(--border);

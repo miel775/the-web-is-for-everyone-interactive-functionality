@@ -96,7 +96,8 @@ app.post ('/publication/:id', async function (request, response) {
     body: JSON.stringify({
       from: `Miel_${request.body.from}`,
       text: request.body.text,
-      for: `${request.body.for}_${publicationID}`
+      for: `${request.body.for}_${publicationID}`,
+      emoji: request.body.emoji
     }),
     headers: {
       'Content-Type': 'application/json'

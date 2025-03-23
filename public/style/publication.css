@@ -4,6 +4,10 @@
     flex-direction: column;
     place-items: center;
 
+    @media (max-width: 720px) {
+        margin-top: 0em;
+    }
+
     
     a {
         margin-top: 2em;

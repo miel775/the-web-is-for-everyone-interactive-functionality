@@ -1,6 +1,6 @@
 const photoParade = document.querySelector('.publicaties-1')
 const photoParadeTwo = document.querySelector('.publicaties-2')
-const andereLeden = document.querySelector('.foto-parade')
+const andereLeden = document.querySelector('.picture-container-1')
 
 
 if (photoParade) {

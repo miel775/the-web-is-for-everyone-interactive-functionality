@@ -88,6 +88,8 @@ app.get ('/berichten', async function (request, response) {
   })
 })
 
+
+
 app.post ('/publication/:id', async function (request, response) {
   const publicationID = request.params.id;
 
@@ -96,7 +98,6 @@ app.post ('/publication/:id', async function (request, response) {
     body: JSON.stringify({
       from: `Miel_${request.body.from}`,
       text: request.body.text,
-      for: `${request.body.for}_${publicationID}`,
       emoji: request.body.emoji
     }),
     headers: {

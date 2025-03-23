@@ -1,0 +1,1 @@
+// when the comment section is empty show this html class

@@ -41,3 +41,23 @@
         scale: 1.2;
     }
 }
+
+@keyframes openingsection {
+    0% {
+        height: var(--spacing-48);
+    }
+
+    100% {
+        height: var(--spacing-128);
+    }
+}
+
+@keyframes slidein {
+    0% {
+        transform: translate(-1em);
+    }
+
+    100% {
+        transform: translate(0); 
+    }
+}

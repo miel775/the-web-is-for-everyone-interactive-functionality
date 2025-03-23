@@ -24,18 +24,22 @@
     <section class="comment">
         
 
-    </section>
+  
+
+    <div class="empty-commentsection">
+        <p>I am sorry but this comment section is empty... 😢</p>
+    </div>
 
     {% for message in messages %}
         <div class="comment-1">
             <div class="name">
-                <p>{{ message.from | replace: "Miel_", "" }}</p>
+                <h4>{{ message.from | replace: "Miel_", "" }}</h4>
             </div>
 
             <div class="emoji">
                 {% assign emoji = message.emoji | split: "_" %}
                 {% if message.emoji == 'smile' %}😊{%endif%}
-                {% if message.emoji == 'suprise' %}😲{%endif%}
+                {% if message.emoji == 'surprise' %}😲{%endif%}
                 {% if message.emoji == 'tired' %}😩{%endif%}
                 {% if message.emoji == 'cry' %}😢{%endif%}
             </div>
@@ -46,6 +50,8 @@
         </div>
     {% endfor %}
 
+    </section>
+
     <section class="type">
 
         <form class="form-element" action="/publication/{{publicationz.id}}" method="POST">
@@ -53,18 +59,18 @@
                         
             <div class="form-elements">
 
-                <textarea name="text" for="message" rows="12" cols="140" required class="text-area">    
+                <textarea name="text" for="message" rows="12" cols="140" required class="text-area" placeholder="Reageer hier jouw mening..." required>    
                 </textarea>
 
-                <input type="text" name="from" id="name" placeholder="Naam" cols="25" required/>
+                <input type="text" name="from" id="name" placeholder="Naam" cols="25" required class="hide"/>
 
-                <select name="emoji" id="emojis" required>
+                <select name="emoji" id="emojis" required class="hide">
                     <option value="smile">😊 </option>
                     <option value="tired">😩 </option>
-                    <option value="surprise">😲 </option>
+                    <option value="surprise">😲</option>
                     <option value="cry">😢 </option>
                 </select>
-                <button type="submit">Plaats</button>
+                <button type="submit" id="button" class="hide"> <p>Plaats</p> </button>
             </div>
         </form>
 

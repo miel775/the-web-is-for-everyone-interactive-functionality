@@ -70,6 +70,7 @@ section {
         position: relative;
         top: -2.2em;
         left: 0.3em;
+        z-index: -1;
     }
 
     .form-elements {
@@ -88,34 +89,44 @@ section {
             height: 3em;
         }
 
-        .text-area:focus {
+        .text-area.opening-comment {
             border: var(--border);
             color:  var(--color-blue);
             animation: openingsection 0.3s linear forwards;
         }
 
-        .text-area:focus ~ button + &.name + &.emoji {
+        button.opening-comment {
             display: block;
-            animation: slidein 1s linear;
+            animation: slidein 0.5s forwards;
         }
 
+        #name.opening-comment {
+            display: block;
+            animation: slidein 0.5s forwards;
+        }
+
+        #emojis.opening-comment {
+            display: block;
+            animation: slidein 0.5s forwards;
+        }
 
 
         button {
             grid-column-start: 4;
             position: relative;
-            z-index: 2;
+            z-index: -2;
             padding: var(--spacing-8);
             border: var(--border);
             background-color: var(--white);
-            display: none;
+            cursor: pointer;
         }
     }
 
-    .emoji {
+    .emoji-comment {
         position: relative;
         top: -3.6em;
         left: 17.5em;
+        z-index: -1;
         
         select {
             padding: var(--spacing-8);

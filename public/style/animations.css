@@ -54,10 +54,10 @@
 
 @keyframes slidein {
     0% {
-        transform: translate(-1em);
+        transform: translateY(-8em);
     }
 
     100% {
-        transform: translate(0); 
+        transform: translateY(0); 
     }
 }

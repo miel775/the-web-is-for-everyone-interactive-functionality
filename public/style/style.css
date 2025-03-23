@@ -370,7 +370,6 @@ body {
     position: relative;
     overflow: hidden;
     animation-play-state: running; 
-    padding: 1em;
 }
 
 .picture-container-1 {

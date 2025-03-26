@@ -376,6 +376,7 @@ body {
 .get-updated {
     display: flex;
     align-items: center;
+    align-content: space-between;
     border: var(--border);
 
     h3 {

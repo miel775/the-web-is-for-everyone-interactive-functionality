@@ -75,40 +75,22 @@
     </section>
 
     <section class="loading-state">
-        <form class="form-element" action="/publication/{{publicationz.id}}" method="POST">
-            {% comment %} hier kan je je bericht typen {% endcomment %}
-                        
-            <div class="form-elements">
-
-                <div class="progressbar">
-                        {% comment %} hier komt een loading element  {% endcomment %}
-                        <label>Comment wordt geplaatst</label>
-                        <progress id="file" max="100" value="0" data-value="100">000</progress>
-                </div>
-
-                <input type="text" name="from" id="name" placeholder="Naam" cols="25" required class="hide" class="name-comment"/>
-
-                <select name="emoji-comment" id="emojis" required class="hide">
-                    <option value="smile">😊 </option>
-                    <option value="tired">😩 </option>
-                    <option value="surprise">😲</option>
-                    <option value="cry">😢 </option>
-                </select>
-                <button type="submit" id="button" class="hide"> <p>Plaats</p> </button>
-            </div>
-        </form>
+        <h2>Comment wordt geplaatst</h2>
+        <div class="progressbar">
+            <progress id="file" max="100" value="0" data-value="100">000</progress>
+        </div>
     </section>
 
     <section class="error-state"> 
         <div class="error">
-            <h3>Error</h3>
+            <h2>Error</h2>
             <p>Sorry maar het is niet gelukt om het bericht te plaatsen</p>
         </div>
     </section>
 
     <section class="success-state"> 
         <div class="success">
-            <h3>Success</h3>
+            <h2>Success</h2>
             <p>Het is gelukt om de comment te plaatsen.</p>
         </div>
     </section>

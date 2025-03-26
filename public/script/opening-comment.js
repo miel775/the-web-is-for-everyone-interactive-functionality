@@ -15,7 +15,7 @@ textArea.addEventListener('click', function () {
 document.addEventListener('click', function (event) {
     if (!typeArea.contains(event.target) && !textArea.contains(event.target)) {
         formElements.forEach(element => element.classList.remove('opening-comment'));
-        textArea.classList.remove('opening-comment');
+        typeArea.classList.remove('opening-comment');
     }
 });
 

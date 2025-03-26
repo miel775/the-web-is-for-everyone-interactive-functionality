@@ -34,6 +34,10 @@ section {
     border-left: var(--border);
     border-right: var(--border);
     padding: 1em;
+
+    h2 {
+        font-size: var(--desktop-h5);
+    }
 }
 
 .photo {
@@ -157,7 +161,7 @@ section {
 }
 
 
-.loading-state {
+.progressbar {
     /* display: none; */
     display: flex;
     justify-content: center;

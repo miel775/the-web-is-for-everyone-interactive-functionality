@@ -189,30 +189,29 @@ body {
     }
 }
 
-.list-form {
+#zoeken {
+    padding: var(--spacing-8);
+    border: var(--border);
+}
+
+.tool-bar {
     display: flex;
     justify-content: space-evenly;
-    padding-left:  var(--spacing-128);
-    padding-right: var(--spacing-128);
+    margin-left: var(--spacing-32);
+    margin-right: var(--spacing-32);
+    border: var(--border);
+    background-color: var(--color-white);
+    padding: var(--spacing-8);
+
+    select {
+        margin-left: -15em;
+}
 }
 
 .textfield {
     border: var(--border);
     background-color: var(--color-white);
     padding: var(--spacing-4);
-    margin-left: 2em;
-}
-
-.form-filters {
-    border: var(--border);
-    background-color: var(--color-white);
-    padding: var(--spacing-4);
-    display: flex;
-    justify-content: flex-end;
-
-    select {
-        margin-left: -15em;
-}
 }
 
 .content {
@@ -225,6 +224,7 @@ body {
     display: flex;
     animation: parade 15s linear infinite;
     position: absolute;
+    object-fit: cover;
 
     article {
         padding: 1em;
@@ -232,14 +232,13 @@ body {
 
     img {
         border: var(--border);
-        width: 16em;
+        width: 24em;
         height: 16em;
         object-fit: cover;
 
         &:hover {
             animation: scaling 1s linear forwards;
             position: relative;
-
         }
 
         &:hover ~ .hover {
@@ -255,6 +254,10 @@ body {
         color: var(--color-blue);
         top: -156px;
         margin: 2em;
+    }
+
+    .off {
+        display: none;
     }
 }
 
@@ -274,13 +277,19 @@ body {
 
     img {
         border: var(--border);
-        width: 16em;
+        width: 24em;
         height: 16em;
         object-fit: cover;
         
         media (max-width: 1000px) {
             width: 8em;
             height: 8em;
+        }
+
+        
+        &:hover {
+            animation: scaling 1s linear forwards;
+            position: relative;
         }
 
         &:hover ~ .hover {
@@ -300,6 +309,10 @@ body {
         width: 12em;
         left: 2em;
         min-height: 2em;
+    }
+
+    .off {
+        display: none;
     }
 }
 

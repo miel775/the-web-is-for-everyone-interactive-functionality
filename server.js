@@ -70,9 +70,13 @@ app.get('/publication/:id', async function (request, response) {
 
   const messagesFetch = await fetch(`https://fdnd-agency.directus.app/items/dda_messages?filter={"_and":[{"from":{"_contains":"Miel_"}},{"for":{"_contains":"${publicationz}"}}]}`)
   const messagesJSON = await messagesFetch.json();
+  
+  const datedPublications = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?sort=-date&limit=3');
+  const datedPublicationsJSON = await datedPublications.json();
 
   response.render('publication.liquid', {
     publicationz: publicationFetchJSON.data?.[0] || [],
+    datedpublications: datedPublicationsJSON.data,
     messages: messagesJSON.data
   });
 });

@@ -41,9 +41,11 @@ section {
 }
 
 .photo {
-    width: 100%;
-    height: 40%;
-    object-fit: cover;
+    img {
+        width: 100%;
+        height: 20em;
+        object-fit: cover;
+    }
 }
 
 .comment-1 {
@@ -62,7 +64,10 @@ section {
     
     .emoji {
         grid-row-start: 2;
-        transform: scale(2);
+        transform: scale(3);
+        position: relative;
+        left: 10.6em;
+        top: 10.8em;
     }
 
     .comment {
@@ -112,21 +117,21 @@ section {
             position: relative;
             display: block;
             animation: slidein 0.5s forwards;
-            z-index: -1;
+            z-index: 1;
         }
 
         #name.opening-comment {
             position: relative;
             display: block;
             animation: slidein 0.5s forwards;
-            z-index: -1;
+            z-index: 1;
         }
 
         #emojis.opening-comment {
             position: relative;
             display: block;
             animation: slidein 0.5s forwards;
-            z-index: -1;
+            z-index: 1;
         }
 
 
@@ -160,11 +165,25 @@ section {
     }
 }
 
+.loading-state {
+    display: none;
+}
 
-.progressbar {
-    /* display: none; */
-    display: flex;
-    justify-content: center;
+.error-state {
+    display: none;
+}
+
+.success-state {
+    display: none;
+}
+
+
+
+.progressbar progress{
+    height: 3em;
+    width: 100%;
+    background-color: var(--color-white);
+    border: var(--border);
 }
 
 .loading-state.loading {

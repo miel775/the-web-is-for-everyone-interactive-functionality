@@ -1,13 +1,17 @@
 {% include 'views/head.liquid', title: 'DDA Publicaties' %}
 
 <section class="publications">
-    <h1> Publications </h1>
+    <h1> Publicaties </h1>
         <p>Om er voor te zorgen dat ook jij op de hoogte blijft van het laatste nieuws en interessante opinies met betrekking tot onze branche en digitale innovaties, delen we hier alle content die we of zelf hebben gecreëerd, bijvoorbeeld met input van onze leden, of verkregen hebben via één van onze partners.</p>
     </section>
 
     <section class="content">
-        <form class="list-form">
-                <input type="search" placeholder="Zoeken in Publicaties">
+        <div class="toolbar">
+
+                <form class="zoek-functie">
+                    <input type="search" placeholder="Zoeken in Publicaties" id="zoeken">
+                    <button class="zoekknop">Search</button>
+                </form>
 
                 <select id="head-label" name="filteren" class="form-filters">
                     <option value="">Filter op Topic</option>
@@ -15,8 +19,11 @@
                     <option value="DDAforgood">DDAforgood</option>
                     <option value="Branche">Branche</option>
                     <option value="Digitale-inclusie">Digitale Inclusie</option>
+                    <option value="Awards">Digitale Inclusie</option>
+                    <option value="Column">Column</option>
+                    <option value="Belangenhartiging">Belangenhartiging</option>
                 </select>
-        </form>
+        </div>
 
         <div class="publicaties-1">
         {% for publication in publications %}
@@ -36,6 +43,11 @@
                     <h2 class="hover"> {{ publication.title }} </h2>
                 </a>
             {% endfor %}
+        </div>
+
+
+        <div id="resultaat">
+
         </div>
 
     </section>

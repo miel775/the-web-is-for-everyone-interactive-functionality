@@ -35,7 +35,7 @@
             </div>
 
             <div class="emoji">
-                {% assign emoji = message.emoji | split: "_" %}
+                {% assign emoji = message.emoji %}
                 {% if message.emoji == 'smile' %}😊{%endif%}
                 {% if message.emoji == 'surprise' %}😲{%endif%}
                 {% if message.emoji == 'tired' %}😩{%endif%}
@@ -74,21 +74,25 @@
 
     </section>
 
-    <section class="loading-state">
+    {% assign loading-state = true %}
+    <section class="loading-state" id="loading-state">
         <h2>Comment wordt geplaatst</h2>
         <div class="progressbar">
             <progress id="file" max="100" value="0" data-value="100">000</progress>
         </div>
     </section>
 
-    <section class="error-state"> 
+
+    {% assign error-state = true %}
+    <section class="error-state" id="error-state">
         <div class="error">
             <h2>Error</h2>
             <p>Sorry maar het is niet gelukt om het bericht te plaatsen</p>
         </div>
     </section>
 
-    <section class="success-state"> 
+    {% assign success-state = true %}
+    <section class="success-state" id="success-state"> 
         <div class="success">
             <h2>Success</h2>
             <p>Het is gelukt om de comment te plaatsen.</p>

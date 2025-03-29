@@ -159,19 +159,47 @@ body {
 /* publications */
 
 .toolbar {
-    height: var(--spacing-16);
+    height: var(--spacing-48);
     display: flex;
     justify-content: space-between;
-    margin: var(--spacing-16);
+    padding: var(--spacing-32);
     border: var(--border);
 
     svg {
         height: var(--spacing-16);
+        border: var(--border);
+        padding: var(--spacing-16);
     }
+
+    .search {
+        label {
+            display: none;
+        }
+
+        input {
+            display: none;
+        }
+
+    }
+
+    .filter {
+        label {
+            display: none;
+        }
+
+        ul {
+            displya: none;
+        }
+
+        li {
+            display: none;
+        }
+    }
+
+
 }
 
-.publications {
-    margin: var(--spacing-16);
+.publications-list {
     border: var(--border);
 
     article {
@@ -179,9 +207,11 @@ body {
         grid-template-areas: 
         "photo title title title"
         "photo intro intro intro";
-        height: 8em;
+        height: 16em;
         overflow: hidden;
         min-width: 100%;
+        border: var(--border);
+
 
         @media (max-width:1080px) {
             grid-template-areas: 
@@ -194,29 +224,46 @@ body {
             "photo"
             "title"
             "intro";
+            height: 100%;
         }
+    }
     
     img {
         grid-area: photo;
         object-fit: cover;
-        width: 8em;
-        height: 8em;
+        width: 16em;
+        height: 16em;
+        border: var(--border);
+
+        @media (max-width:720px) {
+            width: 100%;
+        }
     }
     
     h2 {
         grid-area: title;
-    }
-    
-    .intro {
-        grid-area: intro;
+        padding: 1em;
         word-wrap: break-word;
     }
+    
+    .intro-list {
+        grid-area: intro;
+        word-wrap: break-word;
+        padding: 1em;
+        margin-top: -3em;
+    }
 
-        .topic {
+        .topic-list {
             position: relative;
+            z-index: 2;
+            border: var(--border-blue);
+            left: 16.4em;
+            top: -3em;
+            width: auto;
+
         }
 }
-}
+
 
 
 

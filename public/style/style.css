@@ -158,163 +158,66 @@ body {
 
 /* publications */
 
+.toolbar {
+    height: var(--spacing-16);
+    display: flex;
+    justify-content: space-between;
+    margin: var(--spacing-16);
+    border: var(--border);
+
+    svg {
+        height: var(--spacing-16);
+    }
+}
+
 .publications {
-    border-left: var(--border);
-    border-right: var(--border);
-    border-bottom: var(--border);
-    h1 {
-        font-family: var(--font-family-regular);
-        display:flex;
-        justify-content: center;
-        text-transform: uppercase;
-    }
-
-    p {
-        text-align: center;
-        margin: var(--spacing-16);
-    }
-}
-
-.content {
-    border-left: var(--border);
-    border-right: var(--border);
-    border-bottom: var(--border);
-
-    form {
-        height: var(--spacing-64);
-        border-bottom: var(--border);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-}
-
-#zoeken {
-    padding: var(--spacing-8);
+    margin: var(--spacing-16);
     border: var(--border);
-}
-
-.tool-bar {
-    display: flex;
-    justify-content: space-evenly;
-    margin-left: var(--spacing-32);
-    margin-right: var(--spacing-32);
-    border: var(--border);
-    background-color: var(--color-white);
-    padding: var(--spacing-8);
-
-    select {
-        margin-left: -15em;
-}
-}
-
-.textfield {
-    border: var(--border);
-    background-color: var(--color-white);
-    padding: var(--spacing-4);
-}
-
-.content {
-    overflow: hidden;
-    height: 35em;
-}
-
-
-.publicaties-1 {
-    display: flex;
-    animation: parade 15s linear infinite;
-    position: absolute;
-    object-fit: cover;
-
-    article {
-        padding: 1em;
-    }
-
-    img {
-        border: var(--border);
-        width: 24em;
-        height: 16em;
-        object-fit: cover;
-
-        &:hover {
-            animation: scaling 1s linear forwards;
-            position: relative;
-        }
-
-        &:hover ~ .hover {
-            display: block;
-        }
-    }
-
-    h2 {
-        display: none;
-        position: relative;
-        font-size: 15px;
-        background-color: var(--color-white);
-        color: var(--color-blue);
-        top: -156px;
-        margin: 2em;
-    }
-
-    .off {
-        display: none;
-    }
-}
-
-
-.publicaties-2 {
-    display: flex;
-    animation: parade-reversed 15s linear infinite;
-    left: -28em;
-    top: 16em;
-    position: relative;
 
     article {
         display: grid;
-        grid-template-columns: repeat(8, 1fr);
+        grid-template-areas: 
+        "photo title title title"
+        "photo intro intro intro";
+        height: 8em;
         overflow: hidden;
-    }
+        min-width: 100%;
 
+        @media (max-width:1080px) {
+            grid-template-areas: 
+            "photo title title"
+            "photo intro intro";
+        }
+
+        @media (max-width:720px) {
+            grid-template-areas: 
+            "photo"
+            "title"
+            "intro";
+        }
+    
     img {
-        border: var(--border);
-        width: 24em;
-        height: 16em;
+        grid-area: photo;
         object-fit: cover;
-        
-        media (max-width: 1000px) {
-            width: 8em;
-            height: 8em;
-        }
-
-        
-        &:hover {
-            animation: scaling 1s linear forwards;
-            position: relative;
-        }
-
-        &:hover ~ .hover {
-            display: block;
-            position: relative;
-            visibility: visible;
-        }
+        width: 8em;
+        height: 8em;
     }
-
+    
     h2 {
-        visibility: hidden;
-        position: relative;
-        font-size: 15px;
-        background-color: var(--color-white);
-        color: var(--color-blue);
-        top: -156px;
-        width: 12em;
-        left: 2em;
-        min-height: 2em;
+        grid-area: title;
+    }
+    
+    .intro {
+        grid-area: intro;
+        word-wrap: break-word;
     }
 
-    .off {
-        display: none;
-    }
+        .topic {
+            position: relative;
+        }
 }
+}
+
 
 
 .laatste-nieuws {

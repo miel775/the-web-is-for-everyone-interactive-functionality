@@ -63,6 +63,7 @@ app.get ('/', async function (request, response) {
   });
 });
 
+
 app.get('/publication/:id', async function (request, response) {       
   const publicationz = request.params.id;                              
   const publicationFetch = await fetch(`https://fdnd-agency.directus.app/items/dda_publications/?fields=*.*&filter={"id":"${publicationz}"}&limit=1`)
@@ -70,13 +71,9 @@ app.get('/publication/:id', async function (request, response) {
 
   const messagesFetch = await fetch(`https://fdnd-agency.directus.app/items/dda_messages?filter={"_and":[{"from":{"_contains":"Miel_"}},{"for":{"_contains":"${publicationz}"}}]}`)
   const messagesJSON = await messagesFetch.json();
-  
-  const datedPublications = await fetch('https://fdnd-agency.directus.app/items/dda_publications/?sort=-date&limit=3');
-  const datedPublicationsJSON = await datedPublications.json();
 
   response.render('publication.liquid', {
     publicationz: publicationFetchJSON.data?.[0] || [],
-    datedpublications: datedPublicationsJSON.data,
     messages: messagesJSON.data
   });
 });
@@ -102,7 +99,8 @@ app.post ('/publication/:id', async function (request, response) {
     body: JSON.stringify({
       from: `Miel_${request.body.from}`,
       text: request.body.text,
-      emoji: request.body.emoji
+      emoji: request.body.emoji,
+      for: publicationID 
     }),
     headers: {
       'Content-Type': 'application/json'
@@ -111,36 +109,6 @@ app.post ('/publication/:id', async function (request, response) {
 
   response.redirect(303, `/publication/${publicationID}`);
 })
-
-app.get ('/')
-// Het bericht wat in de DDA messages zit moet verstuurd worden naar de body
-
-/*
-// Zie https://expressjs.com/en/5x/api.html#app.post.method over app.post()
-app.post(…, async function (request, response) {
-
-  // In request.body zitten alle formuliervelden die een `name` attribuut hebben in je HTML
-  console.log(request.body)
-
-  // Via een fetch() naar Directus vullen we nieuwe gegevens in
-
-  // Zie https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch over fetch()
-  // Zie https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify over JSON.stringify()
-  // Zie https://docs.directus.io/reference/items.html#create-an-item over het toevoegen van gegevens in Directus
-  // Zie https://docs.directus.io/reference/items.html#update-an-item over het veranderen van gegevens in Directus
-  await fetch(…, {
-    method: …,
-    body: JSON.stringify(…),
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
-    }
-  });
-
-  // Redirect de gebruiker daarna naar een logische volgende stap
-  // Zie https://expressjs.com/en/5x/api.html#res.redirect over response.redirect()
-  response.redirect(303, …)
-})
-*/
 
 
 app.get('/', async function (request, response) {
@@ -157,3 +125,5 @@ app.listen(app.get('port'), function () {
   // Toon een bericht in de console
   console.log(`Daarna kun je via http://localhost:${app.get('port')}/ Hallo WorldWideWeb!`)
 })
+
+console.log('messages')

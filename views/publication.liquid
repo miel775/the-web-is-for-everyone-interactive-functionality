@@ -2,113 +2,95 @@
 
 <section class="publications">
     <a href="/"> Ga terug </a>
-    {% comment %} hier moet nog een app.get komen {% endcomment %}
-    <h1> {{ publicationz.title  }} </h1>
-        <p>Om er voor te zorgen dat ook jij op de hoogte blijft van het laatste nieuws en interessante opinies met betrekking tot onze branche en digitale innovaties, delen we hier alle content die we of zelf hebben gecreëerd, bijvoorbeeld met input van onze leden, of verkregen hebben via één van onze partners.</p>
-    </section>
+    <h1> {{ publication.title }} </h1>
+    <p>Om er voor te zorgen dat ook jij op de hoogte blijft van het laatste nieuws en interessante opinies met betrekking tot onze branche en digitale innovaties, delen we hier alle content die we of zelf hebben gecreëerd, bijvoorbeeld met input van onze leden, of verkregen hebben via één van onze partners.</p>
+</section>
 
-    <section class="intro">
-    <p>{{ publicationz.intro }}</p>
-    </section>
+<section class="intro">
+    <p>{{ publication.intro }}</p>
+</section>
 
-    <section class="photo">
-        <img src="{% if publication.photo %}https://fdnd-agency.directus.app/assets/{{ publication.photo }}{% else %}https://media.istockphoto.com/id/887464786/vector/no-cameras-allowed-sign-flat-icon-in-red-crossed-out-circle-vector.jpg?s=612x612&w=0&k=20&c=LVkPMBiZas8zxBPmhEApCv3UiYjcbYZJsO-CVQjAJeU={% endif %}">
-    </section>
+<section class="photo">
+    <img src="{% if publication.photo %}https://fdnd-agency.directus.app/assets/{{ publication.photo }}{% else %}https://media.istockphoto.com/id/887464786/vector/no-cameras-allowed-sign-flat-icon-in-red-crossed-out-circle-vector.jpg?s=612x612&w=0&k=20&c=LVkPMBiZas8zxBPmhEApCv3UiYjcbYZJsO-CVQjAJeU={% endif %}">
+</section>
 
-    <section class="content">
+<section class="content">
+    {{ publication.content }}
+</section>
 
-    {{ publicationz.content }}
-
-    </section>
-
-    <section class="comment">
-        
-
-    
-
-    {% if empty %}
-    <div class="empty-state" id="empty">
-        <p>Er zijn hier nog geen reacties</p>
-    </div>
+<section class="comment-section">
+    {% assign messageszero = messages %}
+    {% if messageszero.size < 1 %}
+        <div class="empty-state" id="empty">
+            <p>Er zijn hier nog geen reacties</p>
+        </div>
     {% else %}
-    {% for message in messages %}
+    {% for message in messageszero %}
         <div class="comment-1">
             <div class="name">
                 <h4>{{ message.from | replace: "Miel_", "" }}</h4>
             </div>
-
             <div class="emoji">
-                {% assign emoji = message.emoji %}
-                {% if message.emoji == 'smile' %}😊{%endif%}
-                {% if message.emoji == 'surprise' %}😲{%endif%}
-                {% if message.emoji == 'tired' %}😩{%endif%}
-                {% if message.emoji == 'cry' %}😢{%endif%}
+                {% if message.emoji == 'smile' %}😊{% endif %}
+                {% if message.emoji == 'surprise' %}😲{% endif %}
+                {% if message.emoji == 'tired' %}😩{% endif %}
+                {% if message.emoji == 'cry' %}😢{% endif %}
             </div>
-
             <div class="comment">
                 <p>{{ message.text }}</p>
             </div>
         </div>
     {% endfor %}
-    {% endif %}
+{% endif %}
 
-    
-    
+</section>
 
-    
+<section class="type">
+    <form class="form-element" action="/publication/{{ publicationz.id }}" method="POST">
+        <div class="form-elements">
+            <textarea name="text" rows="12" cols="140" required class="text-area" placeholder="Reageer hier jouw mening..."></textarea>
 
-    </section>
+            <input type="text" name="from" id="name" placeholder="Naam" required class="hide name-comment"/>
 
-    <section class="type">
+            <select name="emoji-comment" id="emojis" required class="hide">
+                <option value="smile">😊</option>
+                <option value="tired">😩</option>
+                <option value="surprise">😲</option>
+                <option value="cry">😢</option>
+            </select>
+            <button type="submit" id="button" class="hide"><p>Plaats</p></button>
+        </div>
+    </form>
+</section>
 
-        <form class="form-element" action="/publication/{{publicationz.id}}" method="POST">
-            {% comment %} hier kan je je bericht typen {% endcomment %}
-                        
-            <div class="form-elements">
+{% if loading-state %}
+<section class="loading-state" id="loading-state">
+    <h2>Comment wordt geplaatst</h2>
+    <div class="progressbar">
+        <progress id="file" max="100" value="0" data-value="100">000</progress>
+    </div>
+</section>
+{% endif %}
 
-                <textarea name="text" for="message" rows="12" cols="140" required class="text-area" placeholder="Reageer hier jouw mening..." required>    
-                </textarea>
+{% if error-state %}
+<section class="error-state" id="error-state">
+    <div class="error">
+        <h2>Error</h2>
+        <p>Sorry maar het is niet gelukt om het bericht te plaatsen</p>
+    </div>
+</section>
+{% endif %}
 
-                <input type="text" name="from" id="name" placeholder="Naam" cols="25" required class="hide" class="name-comment"/>
-
-                <select name="emoji-comment" id="emojis" required class="hide">
-                    <option value="smile">😊 </option>
-                    <option value="tired">😩 </option>
-                    <option value="surprise">😲</option>
-                    <option value="cry">😢 </option>
-                </select>
-                <button type="submit" id="button" class="hide"> <p>Plaats</p> </button>
-            </div>
-        </form>
-
-    </section>
-
-    {% assign loading-state = true %}
-    <section class="loading-state" id="loading-state">
-        <h2>Comment wordt geplaatst</h2>
+{% if success-state %}
+<section class="success-state" id="success-state">
+    <div class="success">
+        <h2>Success</h2>
+        <p>Het is gelukt om de comment te plaatsen.</p>
         <div class="progressbar">
-            <progress id="file" max="100" value="0" data-value="100">000</progress>
+            <progress id="file" max="100" value="100" data-value="100">000</progress>
         </div>
-    </section>
-
-
-    {% assign error-state = true %}
-    <section class="error-state" id="error-state">
-        <div class="error">
-            <h2>Error</h2>
-            <p>Sorry maar het is niet gelukt om het bericht te plaatsen</p>
-        </div>
-    </section>
-
-    {% assign success-state = true %}
-    <section class="success-state" id="success-state"> 
-        <div class="success">
-            <h2>Success</h2>
-            <p>Het is gelukt om de comment te plaatsen.</p>
-                <div class="progressbar">
-                    <progress id="file" max="100" value="100" data-value="100">000</progress>
-                </div>
-        </div>
-    </section>
+    </div>
+</section>
+{% endif %}
 
 {% include 'views/footer.liquid' %}

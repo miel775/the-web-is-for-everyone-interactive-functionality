@@ -202,7 +202,7 @@ body {
 .publications-list {
     border: var(--border);
 
-    article {
+    a {
         display: grid;
         grid-template-areas: 
         "photo title title title"
@@ -439,12 +439,14 @@ footer {
     div:nth-of-type(1) {
         grid-column-start: 1;
         grid-column-end: 3;
+        display: flex;
+        justify-content: space-between;
+        padding-left: var(--spacing-16);
+        padding-right: var(--spacing-16);
+        align-content: center;
 
         .login {
             font-family: var(--font-family-mono);
-            position: relative;
-            top: 10em;
-            right: 6em;
         }
 
          img {

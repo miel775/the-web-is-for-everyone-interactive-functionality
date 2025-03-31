@@ -32,17 +32,21 @@
 
         <div class="publications-list">
             {% for publication in publications %}
-                <article>
+                <a href="/publication/{{ publication.id }}">
                     <img src="{% if publication.photo %}https://fdnd-agency.directus.app/assets/{{ publication.photo }}{% else %}https://media.istockphoto.com/id/887464786/vector/no-cameras-allowed-sign-flat-icon-in-red-crossed-out-circle-vector.jpg?s=612x612&w=0&k=20&c=LVkPMBiZas8zxBPmhEApCv3UiYjcbYZJsO-CVQjAJeU={% endif %}" alt="publicatie-foto">
 
-                    <h2> {{ publication.title }} </h2>
+                    <h2 > {{ publication.title }} </h2>
                     <p class="topic-list"> {{ publication.topic }} </p>
                     <p class="intro-list"> {{ publication.intro }} </p>
-                </article>
+                </a>
             {% endfor %}
         </div>
 
-        <div class="loading-state">
+        <div class="empty-state">
+            <h2>Ogenblik geduld alstublieft, de content wordt geladen</h2>
+        </div>
+
+        <div class="empty-state">
             <h2>Ogenblik geduld alstublieft, de content wordt geladen</h2>
         </div>
 

@@ -24,10 +24,13 @@
     <section class="comment">
         
 
-    <div class="empty-commentsection">
-        <p>I am sorry but this comment section is empty... 😢</p>
-    </div>
+    
 
+    {% if empty %}
+    <div class="empty-state" id="empty">
+        <p>Er zijn hier nog geen reacties</p>
+    </div>
+    {% else %}
     {% for message in messages %}
         <div class="comment-1">
             <div class="name">
@@ -47,6 +50,12 @@
             </div>
         </div>
     {% endfor %}
+    {% endif %}
+
+    
+    
+
+    
 
     </section>
 
@@ -96,6 +105,9 @@
         <div class="success">
             <h2>Success</h2>
             <p>Het is gelukt om de comment te plaatsen.</p>
+                <div class="progressbar">
+                    <progress id="file" max="100" value="100" data-value="100">000</progress>
+                </div>
         </div>
     </section>
 

@@ -157,7 +157,7 @@ section {
     }
 
     .text-area.submit-comment {
-        animation: submit 2s linear forwards;
+        animation: submit 0.3s linear forwards;
     }
 
     .emoji-comment {
@@ -188,18 +188,9 @@ section {
     }
 }
 
-.loading-state {
+.hidden {
     display: none;
 }
-
-.error-state {
-    display: none;
-}
-
-.success-state {
-    display: none;
-}
-
 
 .progressbar progress{
     height: 3em;

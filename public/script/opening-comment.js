@@ -2,6 +2,7 @@ const formElements = document.querySelectorAll('.hide');
 const textArea = document.querySelector('.text-area');
 const typeArea = document.querySelector('.type');
 const submitButton = document.getElementById('button');
+const testButton = document.querySelector('.test-submit');
 
 textArea.addEventListener('click', function () {
     formElements.forEach(element => {
@@ -22,6 +23,15 @@ document.addEventListener('click', function (event) {
 
 
 // wanneer je de comment plaats krijg je een animatie te zien
-submitButton.addEventListener('click', function (event) {
-    typeArea.classList.add('submit-comment');
+testButton.addEventListener('click', function (event) {
+    formElements.forEach(element => {
+        element.classList.add('hide');
+        element.classList.remove('opening-comment');
+    })
+
+    textArea.classList.remove('opening-comment')
+
+    requestAnimationFrame(() => {
+        textArea.classList.add('submit-comment');
+    })
 })

@@ -59,17 +59,17 @@ section {
     padding: var(--spacing-16);
 
     .name {
-        grid-row: 1; 
         font-size: 23px;
-        font-family: var(--font-family-mono);
+        position: relative;
+        top: -1.5em;
     }
     
     .emoji {
         grid-row-start: 2;
-        transform: scale(3);
+        transform: scale(5);
         position: relative;
-        left: 13em;
-        top: 10.8em;
+        left: 15.2em;
+        top: 16.0em;
     }
 
     .comment {
@@ -149,6 +149,10 @@ section {
         }
     }
 
+    .text-area.submit-comment {
+        animation: submit 2s linear forwards;
+    }
+
     .emoji-comment {
         position: relative;
         top: -3.6em;
@@ -188,7 +192,6 @@ section {
 .success-state {
     display: none;
 }
-
 
 
 .progressbar progress{

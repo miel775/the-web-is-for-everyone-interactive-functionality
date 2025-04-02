@@ -1,6 +1,7 @@
 const formElements = document.querySelectorAll('.hide');
 const textArea = document.querySelector('.text-area');
 const typeArea = document.querySelector('.type');
+const submitButton = document.getElementById('button');
 
 textArea.addEventListener('click', function () {
     formElements.forEach(element => {
@@ -19,4 +20,8 @@ document.addEventListener('click', function (event) {
     }
 });
 
-const animationTiming = 1000;
+
+// wanneer je de comment plaats krijg je een animatie te zien
+submitButton.addEventListener('click', function (event) {
+    typeArea.classList.add('submit-comment');
+})

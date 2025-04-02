@@ -52,19 +52,20 @@
 
             <input type="text" name="from" id="name" placeholder="Naam" required class="hide name-comment"/>
 
-            <select name="emoji-comment" id="emojis" required class="hide">
+            <select name="emoji" id="emojis" required class="hide">
                 <option value="smile">😊</option>
                 <option value="tired">😩</option>
                 <option value="surprise">😲</option>
                 <option value="cry">😢</option>
             </select>
+
             <button type="submit" id="button" class="hide"><p>Plaats</p></button>
         </div>
     </form>
 </section>
 
 {% if loading-state %}
-<section class="loading-state" id="loading-state">
+<section class="loading-state hidden" id="loading-state">
     <h2>Comment wordt geplaatst</h2>
     <div class="progressbar">
         <progress id="file" max="100" value="0" data-value="100">000</progress>
@@ -73,7 +74,7 @@
 {% endif %}
 
 {% if error-state %}
-<section class="error-state" id="error-state">
+<section class="error-state hidden" id="error-state">
     <div class="error">
         <h2>Error</h2>
         <p>Sorry maar het is niet gelukt om het bericht te plaatsen</p>
@@ -82,7 +83,7 @@
 {% endif %}
 
 {% if success-state %}
-<section class="success-state" id="success-state">
+<section class="success-state hidden" id="success-state">
     <div class="success">
         <h2>Success</h2>
         <p>Het is gelukt om de comment te plaatsen.</p>

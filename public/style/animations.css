@@ -61,3 +61,15 @@
         transform: translateY(0); 
     }
 }
+
+@keyframes submit {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(4em);
+        opacity: 0;
+    }
+}

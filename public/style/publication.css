@@ -78,9 +78,7 @@ section {
     }
 }
 
-.hide  {
-    display: none;
-}
+
 
 .type {
     font-family: var(--font-family-mono);
@@ -115,6 +113,10 @@ section {
             padding-left: -8em;
             padding-top: -8em;
             height: 3em;
+        }
+
+        .text-area:target {
+            border: black 4px solid;
         }
 
         .text-area.opening-comment {
@@ -207,3 +209,35 @@ section {
     display: flex;
     align-content: center;
 }
+
+.hide  {
+    display: none;
+}
+
+
+        .text-area.general {
+            border: var(--border);
+            color:  var(--color-blue);
+            animation: openingsection 0.3s linear forwards;
+        }
+
+        button.general {
+            position: relative;
+            display: block;
+            animation: slideout 0.5s forwards;
+            z-index: 1;
+        }
+
+        #name.general {
+            position: relative;
+            display: block;
+            animation: slideout 0.5s forwards;
+            z-index: 1;
+        }
+
+        #emojis.general {
+            position: relative;
+            display: block;
+            animation: slideout 0.5s forwards;
+            z-index: 1;
+        }

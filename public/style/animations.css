@@ -62,6 +62,26 @@
     }
 }
 
+@keyframes slideout {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(8em); 
+    }
+}
+
+@keyframes closingsection {
+    0% {
+        height: var(--spacing-128);
+    }
+
+    100% {
+        height: var(--spacing-48);
+    }
+}
+
 @keyframes submit {
     0% {
         transform: translateY(0);

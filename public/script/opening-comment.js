@@ -1,4 +1,4 @@
-const formElements = document.querySelectorAll('.hide');
+const formElements = document.querySelectorAll('.forms');
 const textArea = document.querySelector('.text-area');
 const typeArea = document.querySelector('.type');
 const submitButton = document.getElementById('button');
@@ -15,9 +15,17 @@ textArea.addEventListener('click', function () {
 
 
 document.addEventListener('click', function (event) {
-    if (!typeArea.contains(event.target) && !textArea.contains(event.target)) {
-        formElements.forEach(element => element.classList.remove('opening-comment'));
-        typeArea.classList.remove('opening-comment');
+    if (typeArea) {
+        if (!typeArea.contains(event.target) && !textArea.contains(event.target)) {
+            formElements.forEach(element => {
+                element.classList.add('general');
+                element.classList.remove('submit-comment'); 
+            });
+
+            typeArea.classList.remove('opening-comment');
+            textArea.classList.remove('submit-comment');
+            textArea.classList.add('opening-comment'); 
+        }
     }
 });
 

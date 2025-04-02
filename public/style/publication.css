@@ -66,10 +66,9 @@ section {
     
     .emoji {
         grid-row-start: 2;
-        transform: scale(5);
+        grid-column-start: 2;
         position: relative;
-        left: 15.2em;
-        top: 16.0em;
+        top: -2em;
     }
 
     .comment {
@@ -99,6 +98,14 @@ section {
         grid-template-rows: 90% 10%;
         grid-template-columns: 25% 10% 1fr 10%;
         gap: var(--spacing-8);
+
+        @media (max-width:1080px) {
+            grid-template-columns: 30% 20% 1fr 20%;
+        }
+
+        @media (max-width:720px) {
+            grid-template-columns: 40% 20% 1% 35%;
+        }
         
 
         .text-area {

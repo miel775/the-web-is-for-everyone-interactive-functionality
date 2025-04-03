@@ -59,17 +59,16 @@ section {
     padding: var(--spacing-16);
 
     .name {
-        grid-row: 1; 
         font-size: 23px;
-        font-family: var(--font-family-mono);
+        position: relative;
+        top: -1.5em;
     }
     
     .emoji {
         grid-row-start: 2;
-        transform: scale(3);
+        grid-column-start: 2;
         position: relative;
-        left: 13em;
-        top: 10.8em;
+        top: -2em;
     }
 
     .comment {
@@ -79,9 +78,7 @@ section {
     }
 }
 
-.hide  {
-    display: none;
-}
+
 
 .type {
     font-family: var(--font-family-mono);
@@ -99,6 +96,14 @@ section {
         grid-template-rows: 90% 10%;
         grid-template-columns: 25% 10% 1fr 10%;
         gap: var(--spacing-8);
+
+        @media (max-width:1080px) {
+            grid-template-columns: 30% 20% 1fr 20%;
+        }
+
+        @media (max-width:720px) {
+            grid-template-columns: 40% 20% 1% 35%;
+        }
         
 
         .text-area {
@@ -108,6 +113,10 @@ section {
             padding-left: -8em;
             padding-top: -8em;
             height: 3em;
+        }
+
+        .text-area:target {
+            border: black 4px solid;
         }
 
         .text-area.opening-comment {
@@ -149,6 +158,10 @@ section {
         }
     }
 
+    .text-area.submit-comment {
+        animation: submit 0.3s linear forwards;
+    }
+
     .emoji-comment {
         position: relative;
         top: -3.6em;
@@ -177,19 +190,9 @@ section {
     }
 }
 
-.loading-state {
+.hidden {
     display: none;
 }
-
-.error-state {
-    display: none;
-}
-
-.success-state {
-    display: none;
-}
-
-
 
 .progressbar progress{
     height: 3em;
@@ -206,3 +209,35 @@ section {
     display: flex;
     align-content: center;
 }
+
+.hide  {
+    display: none;
+}
+
+
+        .text-area.general {
+            border: var(--border);
+            color:  var(--color-blue);
+            animation: openingsection 0.3s linear forwards;
+        }
+
+        button.general {
+            position: relative;
+            display: block;
+            animation: slideout 0.5s forwards;
+            z-index: 1;
+        }
+
+        #name.general {
+            position: relative;
+            display: block;
+            animation: slideout 0.5s forwards;
+            z-index: 1;
+        }
+
+        #emojis.general {
+            position: relative;
+            display: block;
+            animation: slideout 0.5s forwards;
+            z-index: 1;
+        }

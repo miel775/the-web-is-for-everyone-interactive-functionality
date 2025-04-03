@@ -10,15 +10,3 @@ const progressBar = document.getElementById('file');
 // wanneer de commentsectie leeg is, dan laat hij een bericht zien dat de comment sectie
 // als de commentsectie leeg is, dan laat hij de emptystate zien
 // wanneer er wel een comment in de sectie zit (else) dan wordt staat emptystate uit
-
-document.addEventListener('submit' async function(event) {
-
-    const form = event.target
-
-    if (!form.hasAttribute('data-enhanced')) {
-        return
-    }
-
-    if ()
-
-})

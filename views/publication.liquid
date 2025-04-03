@@ -14,6 +14,10 @@
     <img src="{% if publication.photo %}https://fdnd-agency.directus.app/assets/{{ publication.photo }}{% else %}https://media.istockphoto.com/id/887464786/vector/no-cameras-allowed-sign-flat-icon-in-red-crossed-out-circle-vector.jpg?s=612x612&w=0&k=20&c=LVkPMBiZas8zxBPmhEApCv3UiYjcbYZJsO-CVQjAJeU={% endif %}">
 </section>
 
+<section class="test">
+    <button class="test-submit">TEST</button>
+</section>
+
 <section class="content">
     {{ publication.content }}
 </section>
@@ -50,21 +54,22 @@
         <div class="form-elements">
             <textarea name="text" rows="12" cols="140" required class="text-area" placeholder="Reageer hier jouw mening..."></textarea>
 
-            <input type="text" name="from" id="name" placeholder="Naam" required class="hide name-comment"/>
+            <input type="text" name="from" id="name" placeholder="Naam" required class="forms hide name-comment" class="forms"/>
 
-            <select name="emoji-comment" id="emojis" required class="hide">
+            <select name="emoji" id="emojis" required class="forms hide">
                 <option value="smile">😊</option>
                 <option value="tired">😩</option>
                 <option value="surprise">😲</option>
                 <option value="cry">😢</option>
             </select>
-            <button type="submit" id="button" class="hide"><p>Plaats</p></button>
+
+            <button type="submit" id="button" class="forms hide"><p>Plaats</p></button>
         </div>
     </form>
 </section>
 
 {% if loading-state %}
-<section class="loading-state" id="loading-state">
+<section class="loading-state hidden" id="loading-state">
     <h2>Comment wordt geplaatst</h2>
     <div class="progressbar">
         <progress id="file" max="100" value="0" data-value="100">000</progress>
@@ -73,7 +78,7 @@
 {% endif %}
 
 {% if error-state %}
-<section class="error-state" id="error-state">
+<section class="error-state hidden" id="error-state">
     <div class="error">
         <h2>Error</h2>
         <p>Sorry maar het is niet gelukt om het bericht te plaatsen</p>
@@ -82,7 +87,7 @@
 {% endif %}
 
 {% if success-state %}
-<section class="success-state" id="success-state">
+<section class="success-state hidden" id="success-state">
     <div class="success">
         <h2>Success</h2>
         <p>Het is gelukt om de comment te plaatsen.</p>

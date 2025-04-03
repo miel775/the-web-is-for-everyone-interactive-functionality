@@ -15,16 +15,19 @@ DDA Publicaties. In deze sprint hebben we een hoofdpagina en een detailpagina ge
 ## Beschrijving
 De publicatie pagina is de pagina waar alle nieuwetjes te zien zijn van het bedrijf. Het is een pagina met nieuwsitems gesorteerd. Een design was er al dus vanuit het [Figma](#https://www.figma.com/design/2IHw0QQQX3RMr1qb55nExx/DDA-design?node-id=1-2249&t=Iwk17wmFTGJ2l5Wb-1) bestand heb ik verder gewerkt met schetsen en een prototype vanuit het design. Van de publicaties heb ik een overzichtspagina gemaakt en een detail pagina.
 
-![image](https://github.com/user-attachments/assets/52ef208d-ae4c-4271-bc63-b8737c731996)
+![image](https://github.com/user-attachments/assets/d57008eb-8583-4c70-b40c-9681145ade2d)
 
-Dit is de eerste versie die is uitgekomen (version 1) aangezien we meerdere sprint aan deze opdrachtgever gaan werken.
+Dit is de tweede versie die is uitgekomen (version 2) aangezien we meerdere sprint aan deze opdrachtgever gaan werken. Er zijn weinig veranderingen doorgevoerd sinds de laatste versie maar vooral wat updates in de toegankelijkheid en UI states
 
-<!-- In de Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
-<!-- Voeg een mooie poster visual toe 📸 -->
-<!-- Voeg een link toe naar Github Pages 🌐-->
+##Publicatie-pagina##
+Wanneer je op een publicatie klikt ga je naar die publicatie.
+
+![image](https://github.com/user-attachments/assets/fda5cbb2-3364-432e-8452-4a3375f4398e)
+
+Je kan reageren onder de publicatie door je mening te geven. Er zijn 4 opties van gevoelens die je kan uiten blij,boos, verrast en verdrietig. Je kan je naam achterlaten en dan versturen. Dan  verschijnt de reactie onder de blog. Wanneer er geen reacties zijn dan staat er "er zijn nog geen reacties".
 
 ## Gebruik
-De pagina bestaat uit een header waar je kan navigeren naar andere pagina's. Ook zijn er twee buttons toegevoegd die je leiden naar het aanmelden van de publicaties.
+De pagina bestaat uit een header waar je kan navigeren naar andere pagina's. Ook zijn er twee buttons toegevoegd die je leiden naar het aanmelden van de publicaties. Er staat een lijst van de publicaties die reeds zijn gepubliceerd. Deze data wordt geladen via een data base. Hier staat de intro (klein stukje over de publicaie) en de tags (topic) waar dit bijhoort.
 <!--Bij Gebruik staat hoe je project er uit ziet, hoe het werkt en wat je er mee kan. -->
 
 ## Kenmerken
@@ -33,10 +36,11 @@ De HTML is opgebouwd in een liquid file. De server wordt gebruikt om data op te 
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met Javascript gedaan en hoe? Misschien heb je een framwork of library gebruikt? -->
 
 ## Installatie
-Start de terminal op van het hoofdmapje en typ 'npm install'. Laad dan http://localhost:8000 in je browser.
+Start de terminal op van het hoofdmapje en typ 'npm install'. Laad dan http://localhost:8000 in je browser. Hiervoor moet je wel NodeJS hebben geinstalleerd.
 
 ## Bronnen
 [Display:flex](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+[Liquid language]([https://css-tricks.com/snippets/css/a-guide-to-flexbox/](https://shopify.github.io/liquid/))
 
 ## Licentie
 This project is licensed under the terms of the [MIT license](./LICENSE).

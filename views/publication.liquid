@@ -2,16 +2,16 @@
 
 <section class="publications">
     <a href="/"> Ga terug </a>
-    <h1> {{ publication.title }} </h1>
+    <h1> {{ publicationz.title }} </h1>
     <p>Om er voor te zorgen dat ook jij op de hoogte blijft van het laatste nieuws en interessante opinies met betrekking tot onze branche en digitale innovaties, delen we hier alle content die we of zelf hebben gecreëerd, bijvoorbeeld met input van onze leden, of verkregen hebben via één van onze partners.</p>
 </section>
 
 <section class="intro">
-    <p>{{ publication.intro }}</p>
+    <p>{{ publicationz.intro }}</p>
 </section>
 
 <section class="photo">
-    <img src="{% if publication.photo %}https://fdnd-agency.directus.app/assets/{{ publication.photo }}{% else %}https://media.istockphoto.com/id/887464786/vector/no-cameras-allowed-sign-flat-icon-in-red-crossed-out-circle-vector.jpg?s=612x612&w=0&k=20&c=LVkPMBiZas8zxBPmhEApCv3UiYjcbYZJsO-CVQjAJeU={% endif %}">
+    <img src="{% if publicationz.photo %}https://fdnd-agency.directus.app/assets/{{ publicationz.photo }}{% else %}https://media.istockphoto.com/id/887464786/vector/no-cameras-allowed-sign-flat-icon-in-red-crossed-out-circle-vector.jpg?s=612x612&w=0&k=20&c=LVkPMBiZas8zxBPmhEApCv3UiYjcbYZJsO-CVQjAJeU={% endif %}">
 </section>
 
 <section class="test">
@@ -19,7 +19,7 @@
 </section>
 
 <section class="content">
-    {{ publication.content }}
+    {{ publicationz.content }}
 </section>
 
 <section class="comment-section">

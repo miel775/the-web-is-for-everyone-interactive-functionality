@@ -471,8 +471,6 @@ footer {
         @media (min-width:720px) {
             grid-row-start: 2;
         }
-
-
     }
 
     div:nth-of-type(3) {
